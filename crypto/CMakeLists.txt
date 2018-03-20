@@ -810,7 +810,7 @@ if(EXTRA_EXPORT)
 endif()
 
 add_library(crypto ${CRYPTO_SRC})
-if (BUILD_SHARED)
+if (BUILD_SHARED_LIBS)
 	export_symbol(crypto ${CMAKE_CURRENT_BINARY_DIR}/crypto_p.sym)
 	if (WIN32)
 		target_link_libraries(crypto Ws2_32.lib)
