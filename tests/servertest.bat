@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 REM	servertest.bat
 
-set servertest_bin=Debug\servertest.exe
+set servertest_bin=%bindir%\servertest.exe
 if not exist %servertest_bin% exit /b 1
 
 if "%srcdir%"=="" (

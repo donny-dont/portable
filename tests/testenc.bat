@@ -3,10 +3,8 @@ setlocal enabledelayedexpansion
 REM	testenc.bat
 
 set test=p
-set cmd=..\apps\openssl\Debug\openssl.exe
+set cmd=%openssldir%\openssl.exe
 if not exist %cmd% exit /b 1
-
-set srcdir=..\..\tests
 
 copy %srcdir%\openssl.cnf %test%
 

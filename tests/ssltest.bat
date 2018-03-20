@@ -2,10 +2,10 @@
 setlocal enabledelayedexpansion
 REM	ssltest.bat
 
-set ssltest_bin=Debug\ssltest.exe
+set ssltest_bin=%bindir%\ssltest.exe
 if not exist %ssltest_bin% exit /b 1
 
-set openssl_bin=..\apps\openssl\Debug\openssl.exe
+set openssl_bin=%openssldir%\openssl.exe
 if not exist %openssl_bin% exit /b 1
 
 if "%srcdir%"=="" (

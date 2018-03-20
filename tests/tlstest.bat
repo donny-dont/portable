@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 REM	tlstest.bat
 
-set tlstest_bin=Debug\tlstest.exe
+set tlstest_bin=%bindir%\tlstest.exe
 if not exist %tlstest_bin% exit /b 1
 
 if "%srcdir%"=="" (

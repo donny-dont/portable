@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 REM	pq_test.bat
 
-set TEST=Debug\pq_test.exe
+set TEST=%bindir%\pq_test.exe
 if not exist %TEST% exit /b 1
 
 set pq_output=pq_output.txt

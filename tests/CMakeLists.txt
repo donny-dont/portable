@@ -246,6 +246,7 @@ if(ENABLE_EXTRATESTS)
 	else()
 		add_test(ocsptest ${CMAKE_CURRENT_SOURCE_DIR}/ocsptest.bat)
 	endif()
+	set_property(TEST ocsptest PROPERTY ENVIRONMENT bindir=${CMAKE_CURRENT_BINARY_DIR})
 endif()
 
 # optionstest
@@ -285,7 +286,10 @@ if(NOT MSVC)
 else()
 	add_test(pq_test ${CMAKE_CURRENT_SOURCE_DIR}/pq_test.bat)
 endif()
-set_tests_properties(pq_test PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST pq_test PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+    bindir=${CMAKE_CURRENT_BINARY_DIR}
+)
 
 # randtest
 add_executable(randtest randtest.c)
@@ -329,7 +333,10 @@ if(NOT MSVC)
 else()
 	add_test(servertest ${CMAKE_CURRENT_SOURCE_DIR}/servertest.bat)
 endif()
-set_tests_properties(servertest PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST servertest PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+    bindir=${CMAKE_CURRENT_BINARY_DIR}
+)
 
 # sha1test
 add_executable(sha1test sha1test.c)
@@ -359,7 +366,11 @@ if(NOT MSVC)
 else()
 	add_test(ssltest ${CMAKE_CURRENT_SOURCE_DIR}/ssltest.bat)
 endif()
-set_tests_properties(ssltest PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST ssltest PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	bindir=${CMAKE_CURRENT_BINARY_DIR}
+	openssldir=${OPENSSL_BINARY_DIR}
+)
 
 # testdsa
 if(NOT MSVC)
@@ -367,7 +378,10 @@ if(NOT MSVC)
 else()
 	add_test(testdsa ${CMAKE_CURRENT_SOURCE_DIR}/testdsa.bat)
 endif()
-set_tests_properties(testdsa PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST testdsa PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	openssldir=${OPENSSL_BINARY_DIR}
+)
 
 # testenc
 if(NOT MSVC)
@@ -375,7 +389,10 @@ if(NOT MSVC)
 else()
 	add_test(testenc ${CMAKE_CURRENT_SOURCE_DIR}/testenc.bat)
 endif()
-set_tests_properties(testenc PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST testenc PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	openssldir=${OPENSSL_BINARY_DIR}
+)
 
 # testrsa
 if(NOT MSVC)
@@ -383,7 +400,10 @@ if(NOT MSVC)
 else()
 	add_test(testrsa ${CMAKE_CURRENT_SOURCE_DIR}/testrsa.bat)
 endif()
-set_tests_properties(testrsa PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST testrsa PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	openssldir=${OPENSSL_BINARY_DIR}
+)
 
 # timingsafe
 add_executable(timingsafe timingsafe.c)
@@ -411,7 +431,10 @@ if(NOT MSVC)
 else()
 	add_test(tlstest ${CMAKE_CURRENT_SOURCE_DIR}/tlstest.bat)
 endif()
-set_tests_properties(tlstest PROPERTIES ENVIRONMENT "srcdir=${CMAKE_CURRENT_SOURCE_DIR}")
+set_property(TEST tlstest PROPERTY ENVIRONMENT
+	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+    bindir=${CMAKE_CURRENT_BINARY_DIR}
+)
 
 # tls_ext_alpn
 add_executable(tls_ext_alpn tls_ext_alpn.c)

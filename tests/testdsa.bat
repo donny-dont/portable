@@ -5,7 +5,7 @@ REM	testdsa.bat
 
 REM # Test DSA certificate generation of openssl
 
-set cmd=..\apps\openssl\Debug\openssl.exe
+set cmd=%openssldir%\openssl.exe
 if not exist %cmd% exit /b 1
 
 if "%srcdir%"=="" (
