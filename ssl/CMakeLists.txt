@@ -60,8 +60,6 @@ if (BUILD_SHARED_LIBS)
 		ARCHIVE_OUTPUT_NAME ssl${SSL_POSTFIX})
 	set_target_properties(ssl PROPERTIES VERSION ${SSL_VERSION}
 		SOVERSION ${SSL_MAJOR_VERSION})
-else()
-	add_library(ssl STATIC ${SSL_SRC})
 endif()
 
 if(ENABLE_LIBRESSL_INSTALL)
