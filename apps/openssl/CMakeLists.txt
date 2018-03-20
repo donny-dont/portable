@@ -76,8 +76,6 @@ endif()
 add_executable(openssl ${OPENSSL_SRC})
 target_link_libraries(openssl ${OPENSSL_LIBS})
 
-set(OPENSSL_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
-
 if(ENABLE_LIBRESSL_INSTALL)
 	install(TARGETS openssl DESTINATION ${CMAKE_INSTALL_BINDIR})
 	install(FILES openssl.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)

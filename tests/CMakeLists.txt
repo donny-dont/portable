@@ -24,6 +24,10 @@ foreach(lib IN LISTS OPENSSL_LIBS)
 	endif()
 endforeach()
 
+file(TO_NATIVE_PATH ${CMAKE_CURRENT_SOURCE_DIR} TEST_SOURCE_DIR)
+file(TO_NATIVE_PATH ${CMAKE_CURRENT_BINARY_DIR} TEST_BINARY_DIR)
+file(TO_NATIVE_PATH ${CMAKE_BINARY_DIR}/apps/openssl OPENSSL_BINARY_DIR)
+
 # aeadtest
 add_executable(aeadtest aeadtest.c)
 target_link_libraries(aeadtest ${TESTS_LIBS})
@@ -246,7 +250,7 @@ if(ENABLE_EXTRATESTS)
 	else()
 		add_test(ocsptest ${CMAKE_CURRENT_SOURCE_DIR}/ocsptest.bat)
 	endif()
-	set_property(TEST ocsptest PROPERTY ENVIRONMENT bindir=${CMAKE_CURRENT_BINARY_DIR})
+	set_property(TEST ocsptest PROPERTY ENVIRONMENT bindir=${TEST_BINARY_DIR})
 endif()
 
 # optionstest
@@ -287,8 +291,8 @@ else()
 	add_test(pq_test ${CMAKE_CURRENT_SOURCE_DIR}/pq_test.bat)
 endif()
 set_property(TEST pq_test PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
-    bindir=${CMAKE_CURRENT_BINARY_DIR}
+	srcdir=${TEST_SOURCE_DIR}
+	bindir=${TEST_BINARY_DIR}
 )
 
 # randtest
@@ -334,8 +338,8 @@ else()
 	add_test(servertest ${CMAKE_CURRENT_SOURCE_DIR}/servertest.bat)
 endif()
 set_property(TEST servertest PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
-    bindir=${CMAKE_CURRENT_BINARY_DIR}
+	srcdir=${TEST_SOURCE_DIR}
+	bindir=${TEST_BINARY_DIR}
 )
 
 # sha1test
@@ -367,8 +371,8 @@ else()
 	add_test(ssltest ${CMAKE_CURRENT_SOURCE_DIR}/ssltest.bat)
 endif()
 set_property(TEST ssltest PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
-	bindir=${CMAKE_CURRENT_BINARY_DIR}
+	srcdir=${TEST_SOURCE_DIR}
+	bindir=${TEST_BINARY_DIR}
 	openssldir=${OPENSSL_BINARY_DIR}
 )
 
@@ -379,7 +383,7 @@ else()
 	add_test(testdsa ${CMAKE_CURRENT_SOURCE_DIR}/testdsa.bat)
 endif()
 set_property(TEST testdsa PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	srcdir=${TEST_SOURCE_DIR}
 	openssldir=${OPENSSL_BINARY_DIR}
 )
 
@@ -390,7 +394,7 @@ else()
 	add_test(testenc ${CMAKE_CURRENT_SOURCE_DIR}/testenc.bat)
 endif()
 set_property(TEST testenc PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	srcdir=${TEST_SOURCE_DIR}
 	openssldir=${OPENSSL_BINARY_DIR}
 )
 
@@ -401,7 +405,7 @@ else()
 	add_test(testrsa ${CMAKE_CURRENT_SOURCE_DIR}/testrsa.bat)
 endif()
 set_property(TEST testrsa PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
+	srcdir=${TEST_SOURCE_DIR}
 	openssldir=${OPENSSL_BINARY_DIR}
 )
 
@@ -432,8 +436,8 @@ else()
 	add_test(tlstest ${CMAKE_CURRENT_SOURCE_DIR}/tlstest.bat)
 endif()
 set_property(TEST tlstest PROPERTY ENVIRONMENT
-	srcdir=${CMAKE_CURRENT_SOURCE_DIR}
-    bindir=${CMAKE_CURRENT_BINARY_DIR}
+	srcdir=${TEST_SOURCE_DIR}
+	bindir=${TEST_BINARY_DIR}
 )
 
 # tls_ext_alpn
